@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -42,6 +43,18 @@
             this.button1 = new System.Windows.Forms.Button();
             this.SalirVistaCliente = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider3 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider4 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider5 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider6 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider6)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -52,6 +65,7 @@
             this.label1.Size = new System.Drawing.Size(79, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre Cliente";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // textBox1
             // 
@@ -59,6 +73,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(208, 20);
             this.textBox1.TabIndex = 1;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // textBox2
             // 
@@ -142,6 +157,7 @@
             this.button1.TabIndex = 11;
             this.button1.Text = "Actualizar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // SalirVistaCliente
             // 
@@ -163,6 +179,30 @@
             this.label6.TabIndex = 12;
             this.label6.Text = "Nuevo Registro";
             this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // errorProvider2
+            // 
+            this.errorProvider2.ContainerControl = this;
+            // 
+            // errorProvider3
+            // 
+            this.errorProvider3.ContainerControl = this;
+            // 
+            // errorProvider4
+            // 
+            this.errorProvider4.ContainerControl = this;
+            // 
+            // errorProvider5
+            // 
+            this.errorProvider5.ContainerControl = this;
+            // 
+            // errorProvider6
+            // 
+            this.errorProvider6.ContainerControl = this;
             // 
             // frmClientes
             // 
@@ -188,6 +228,12 @@
             this.Text = "frmClientes";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmClientes_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -209,5 +255,11 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button SalirVistaCliente;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ErrorProvider errorProvider2;
+        private System.Windows.Forms.ErrorProvider errorProvider3;
+        private System.Windows.Forms.ErrorProvider errorProvider4;
+        private System.Windows.Forms.ErrorProvider errorProvider5;
+        private System.Windows.Forms.ErrorProvider errorProvider6;
     }
 }

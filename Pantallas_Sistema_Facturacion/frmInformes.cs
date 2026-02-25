@@ -16,5 +16,57 @@ namespace Pantallas_Sistema_Facturacion
         {
             InitializeComponent();
         }
+
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SalirVistaCliente_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        public Validator validator = new Validator();
+        private void button1_Click(object sender, EventArgs e)
+        {
+            validator.ValidarComboBox(comboBox1, errorProvider1);
+            validator.ValidarComboBox(comboBox2, errorProvider2);
+        }
     }
 }

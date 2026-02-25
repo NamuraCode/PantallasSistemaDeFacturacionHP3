@@ -16,5 +16,33 @@ namespace Pantallas_Sistema_Facturacion
         {
             InitializeComponent();
         }
+
+        public Validator validator = new Validator();
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            validator.ValidarCamposTexto(textBox1, errorProvider1);
+            validator.ValidarCamposTexto(textBox8, errorProvider2);
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -16,5 +16,10 @@ namespace Pantallas_Sistema_Facturacion
         {
             InitializeComponent();
         }
+
+        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+
+        }
     }
 }
