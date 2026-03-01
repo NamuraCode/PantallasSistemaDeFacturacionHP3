@@ -21,5 +21,10 @@ namespace PantallasSistemaFacturacion
         {
             webView21.Source = new Uri("https://support.microsoft.com/es-es");
         }
+
+        private void webView21_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
