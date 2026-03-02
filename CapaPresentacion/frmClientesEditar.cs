@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,11 +15,25 @@ namespace PantallasSistemaFacturacion
         public frmClientesEditar()
         {
             InitializeComponent();
+            btnActualizar.Click += btnActualizar_Click;
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            if (!Validaciones.ValidarCamposRequeridos(
+                (txtNombre, "Nombre"),
+                (txtDocumento, "Documento"))) return;
+
+            if (!Validaciones.EsEmailValido(txtCorreo, "Correo")) return;
+            if (!Validaciones.EsEmailValido(txtEmail, "Email")) return;
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)

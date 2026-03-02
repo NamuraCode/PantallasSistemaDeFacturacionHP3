@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -34,6 +34,10 @@ namespace PantallasSistemaFacturacion
 
         private void btnValidar_Click_1(object sender, EventArgs e)
         {
+            if (!Validaciones.ValidarCamposRequeridos(
+                (txtUsuario, "Usuario"),
+                (txtcontrasenia, "Contraseña"))) return;
+
             frmPrincipal principal = new frmPrincipal();
             principal.Show();
             this.Hide();

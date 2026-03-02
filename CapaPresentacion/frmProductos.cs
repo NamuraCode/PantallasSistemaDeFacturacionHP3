@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,6 +24,15 @@ namespace PantallasSistemaFacturacion
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            if (!Validaciones.ValidarCamposRequeridos(
+                (txtCodigo, "Código"),
+                (txtNombreProducto, "Nombre Producto"))) return;
+
+            if (!Validaciones.EsDecimalValido(txtPrecioCompra, "Precio Compra", out decimal precioCompra)) return;
+            if (!Validaciones.EsDecimalValido(txtPrecioVenta, "Precio Venta", out decimal precioVenta)) return;
+            if (!Validaciones.EsEnteroValido(txtStock, "Cantidad Stock", out int stock)) return;
+            if (!Validaciones.ComboBoxSeleccionado(cmbCategoria, "Categoría")) return;
+
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

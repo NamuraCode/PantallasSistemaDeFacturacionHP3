@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,26 +15,31 @@ namespace PantallasSistemaFacturacion
         public frmSeguridad()
         {
             InitializeComponent();
+            txtGuardar.Click += btnActualizarSeguridad_Click;
+        }
+
+        private void btnActualizarSeguridad_Click(object sender, EventArgs e)
+        {
+            if (!Validaciones.ComboBoxSeleccionado(cmbEmpleado, "Empleado")) return;
+            if (!Validaciones.ValidarCamposRequeridos((txtUsuario, "Usuario"))) return;
+            if (!Validaciones.EsClaveValida(txtClave, 6)) return;
+
+            // TODO: llamar DALSeguridad.ActualizarSeguridad
         }
 
         private void txtUsuario_TextChanged(object sender, EventArgs e)
         {
-
+            Validaciones.LimpiarError(txtUsuario);
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private void txtClave_TextChanged(object sender, EventArgs e)
         {
-
+            Validaciones.LimpiarError(txtClave);
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void txtClave_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

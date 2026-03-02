@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +15,8 @@ namespace PantallasSistemaFacturacion
         public frmClientes()
         {
             InitializeComponent();
+            btnBuscar.Click += btnBuscar_Click;
+            btnEliminar.Click += btnEliminar_Click;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -27,21 +29,39 @@ namespace PantallasSistemaFacturacion
 
         }
 
-        private void btnNuevo_Click(object sender, EventArgs e)
+        private void btnBuscar_Click(object sender, EventArgs e)
         {
-            using (var f = new frmClientesEditar())
-            {
-                f.ShowDialog();
-            }
+            if (!Validaciones.ValidarCamposRequeridos((txtBuscar, "Búsqueda"))) return;
+
+            // TODO: llamar DALClientes.BuscarClientes(txtBuscar.Text)
         }
 
-        private void btnSalir_Click(object sender, EventArgs e)
+        private void btnEliminar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (dgvClientes.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Seleccione un cliente de la lista para eliminarlo.",
+                    "Sin selección", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var confirmar = MessageBox.Show("¿Está seguro de que desea eliminar este cliente?",
+                "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirmar != DialogResult.Yes) return;
+
+            // TODO: llamar DALClientes.EliminarCliente(id)
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            if (dgvClientes.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Seleccione un cliente de la lista para editar.",
+                    "Sin selección", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             using (var f = new frmClientesEditar())
             {
                 f.ShowDialog();
@@ -54,6 +74,11 @@ namespace PantallasSistemaFacturacion
             {
                 f.ShowDialog();
             }
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
