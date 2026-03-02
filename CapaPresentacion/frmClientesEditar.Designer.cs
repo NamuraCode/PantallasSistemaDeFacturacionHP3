@@ -29,19 +29,16 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
-            panel5 = new Panel();
             panel4 = new Panel();
             panel2 = new Panel();
             panel1 = new Panel();
             panel3 = new Panel();
-            txtEmail = new TextBox();
             txtCorreo = new TextBox();
             txtDireccion = new TextBox();
             txtDocumento = new TextBox();
             txtNombre = new TextBox();
             btnSalir = new Button();
             btnActualizar = new Button();
-            label5 = new Label();
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
@@ -51,19 +48,16 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(panel5);
             groupBox1.Controls.Add(panel4);
             groupBox1.Controls.Add(panel2);
             groupBox1.Controls.Add(panel1);
             groupBox1.Controls.Add(panel3);
-            groupBox1.Controls.Add(txtEmail);
             groupBox1.Controls.Add(txtCorreo);
             groupBox1.Controls.Add(txtDireccion);
             groupBox1.Controls.Add(txtDocumento);
             groupBox1.Controls.Add(txtNombre);
             groupBox1.Controls.Add(btnSalir);
             groupBox1.Controls.Add(btnActualizar);
-            groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
@@ -75,17 +69,7 @@
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Enter += groupBox1_Enter;
-            // 
-            // panel5
-            // 
-            panel5.BackColor = Color.Gray;
-            panel5.BackgroundImageLayout = ImageLayout.None;
-            panel5.ForeColor = Color.DimGray;
-            panel5.Location = new Point(32, 353);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(500, 2);
-            panel5.TabIndex = 27;
-            // 
+            //
             // panel4
             // 
             panel4.BackColor = Color.Gray;
@@ -129,16 +113,7 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(500, 2);
             panel3.TabIndex = 25;
-            // 
-            // txtEmail
-            // 
-            txtEmail.BorderStyle = BorderStyle.None;
-            txtEmail.Font = new Font("Segoe UI", 15F);
-            txtEmail.Location = new Point(148, 318);
-            txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(373, 27);
-            txtEmail.TabIndex = 11;
-            // 
+            //
             // txtCorreo
             // 
             txtCorreo.BorderStyle = BorderStyle.None;
@@ -201,18 +176,7 @@
             btnActualizar.TabIndex = 5;
             btnActualizar.Text = "Actualizar";
             btnActualizar.UseVisualStyleBackColor = false;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 14.25F);
-            label5.ForeColor = Color.DimGray;
-            label5.Location = new Point(32, 327);
-            label5.Name = "label5";
-            label5.Size = new Size(58, 25);
-            label5.TabIndex = 4;
-            label5.Text = "Email";
-            // 
+            //
             // label4
             // 
             label4.AutoSize = true;
@@ -280,16 +244,13 @@
         private Label label1;
         private Button btnSalir;
         private Button btnActualizar;
-        private Label label5;
         private Label label4;
         private Label label3;
         private Label label2;
-        private TextBox txtEmail;
         private TextBox txtCorreo;
         private TextBox txtDireccion;
         private TextBox txtDocumento;
         private TextBox txtNombre;
-        private Panel panel5;
         private Panel panel4;
         private Panel panel2;
         private Panel panel1;

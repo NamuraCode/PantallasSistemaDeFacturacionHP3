@@ -42,7 +42,7 @@ namespace CapaDatos
             return dt;
         }
 
-        public void InsertarCliente(string nombre, string documento, string direccion, string correo, string email)
+        public void InsertarCliente(string nombre, string documento, string direccion, string correo)
         {
             SqlCommand cmd = new SqlCommand("sp_InsertarCliente", conexion.OpenConnection());
             cmd.CommandType = CommandType.StoredProcedure;
@@ -50,12 +50,11 @@ namespace CapaDatos
             cmd.Parameters.AddWithValue("@Documento", documento);
             cmd.Parameters.AddWithValue("@Direccion", direccion);
             cmd.Parameters.AddWithValue("@Correo", correo);
-            cmd.Parameters.AddWithValue("@Email", email);
             cmd.ExecuteNonQuery();
             conexion.CloseConnection();
         }
 
-        public void ActualizarCliente(int idCliente, string nombre, string documento, string direccion, string correo, string email)
+        public void ActualizarCliente(int idCliente, string nombre, string documento, string direccion, string correo)
         {
             SqlCommand cmd = new SqlCommand("sp_ActualizarCliente", conexion.OpenConnection());
             cmd.CommandType = CommandType.StoredProcedure;
@@ -64,7 +63,6 @@ namespace CapaDatos
             cmd.Parameters.AddWithValue("@Documento", documento);
             cmd.Parameters.AddWithValue("@Direccion", direccion);
             cmd.Parameters.AddWithValue("@Correo", correo);
-            cmd.Parameters.AddWithValue("@Email", email);
             cmd.ExecuteNonQuery();
             conexion.CloseConnection();
         }

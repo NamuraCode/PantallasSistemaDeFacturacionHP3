@@ -7,36 +7,64 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaDatos;
 
 namespace PantallasSistemaFacturacion
 {
     public partial class frmClientes : Form
     {
+        private readonly DALClientes dalClientes = new DALClientes();
+
         public frmClientes()
         {
             InitializeComponent();
-            btnBuscar.Click += btnBuscar_Click;
-            btnEliminar.Click += btnEliminar_Click;
+            this.Load          += frmClientes_Load;
+            btnBuscar.Click    += btnBuscar_Click;
+            btnEliminar.Click  += btnEliminar_Click;
+            btnActualizar.Click += btnActualizar_Click;
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void frmClientes_Load(object? sender, EventArgs e)
         {
-
+            CargarClientes();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void CargarClientes()
         {
-
+            try
+            {
+                dgvClientes.DataSource = dalClientes.ListarClientes();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar clientes: {ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private void btnBuscar_Click(object sender, EventArgs e)
+        private void btnBuscar_Click(object? sender, EventArgs e)
         {
-            if (!Validaciones.ValidarCamposRequeridos((txtBuscar, "Búsqueda"))) return;
-
-            // TODO: llamar DALClientes.BuscarClientes(txtBuscar.Text)
+            try
+            {
+                if (string.IsNullOrWhiteSpace(txtBuscar.Text))
+                    dgvClientes.DataSource = dalClientes.ListarClientes();
+                else
+                    dgvClientes.DataSource = dalClientes.BuscarClientes(txtBuscar.Text.Trim());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al buscar: {ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
+        private void btnActualizar_Click(object? sender, EventArgs e)
+        {
+            txtBuscar.Clear();
+            CargarClientes();
+        }
+
+        private void btnEliminar_Click(object? sender, EventArgs e)
         {
             if (dgvClientes.SelectedRows.Count == 0)
             {
@@ -50,7 +78,17 @@ namespace PantallasSistemaFacturacion
 
             if (confirmar != DialogResult.Yes) return;
 
-            // TODO: llamar DALClientes.EliminarCliente(id)
+            try
+            {
+                int id = Convert.ToInt32(dgvClientes.SelectedRows[0].Cells["IdCliente"].Value);
+                dalClientes.EliminarCliente(id);
+                CargarClientes();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al eliminar: {ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -62,9 +100,11 @@ namespace PantallasSistemaFacturacion
                 return;
             }
 
-            using (var f = new frmClientesEditar())
+            int id = Convert.ToInt32(dgvClientes.SelectedRows[0].Cells["IdCliente"].Value);
+            using (var f = new frmClientesEditar(id))
             {
-                f.ShowDialog();
+                if (f.ShowDialog() == DialogResult.OK)
+                    CargarClientes();
             }
         }
 
@@ -72,7 +112,8 @@ namespace PantallasSistemaFacturacion
         {
             using (var f = new frmClientesEditar())
             {
-                f.ShowDialog();
+                if (f.ShowDialog() == DialogResult.OK)
+                    CargarClientes();
             }
         }
 
@@ -80,5 +121,8 @@ namespace PantallasSistemaFacturacion
         {
             this.Close();
         }
+
+        private void label1_Click(object sender, EventArgs e) { }
+        private void button1_Click(object sender, EventArgs e) { }
     }
 }

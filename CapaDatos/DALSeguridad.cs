@@ -7,10 +7,10 @@ namespace CapaDatos
     {
         private DALConexion conexion = new DALConexion();
 
-        public DataTable ListarEmpleados()
+        public DataTable ListarUsuariosSistema()
         {
             DataTable dt = new DataTable();
-            SqlCommand cmd = new SqlCommand("sp_ListarEmpleados", conexion.OpenConnection());
+            SqlCommand cmd = new SqlCommand("sp_ListarUsuariosSistema", conexion.OpenConnection());
             cmd.CommandType = CommandType.StoredProcedure;
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
@@ -18,23 +18,11 @@ namespace CapaDatos
             return dt;
         }
 
-        public DataTable ObtenerUsuarioPorEmpleado(int idEmpleado)
+        public void ActualizarUsuario(int idUsuario, string usuario, string clave)
         {
-            DataTable dt = new DataTable();
-            SqlCommand cmd = new SqlCommand("sp_ObtenerUsuarioPorEmpleado", conexion.OpenConnection());
+            SqlCommand cmd = new SqlCommand("sp_ActualizarUsuario", conexion.OpenConnection());
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@IdEmpleado", idEmpleado);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            da.Fill(dt);
-            conexion.CloseConnection();
-            return dt;
-        }
-
-        public void ActualizarSeguridad(int idEmpleado, string usuario, string clave)
-        {
-            SqlCommand cmd = new SqlCommand("sp_ActualizarSeguridad", conexion.OpenConnection());
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@IdEmpleado", idEmpleado);
+            cmd.Parameters.AddWithValue("@IdUsuario", idUsuario);
             cmd.Parameters.AddWithValue("@Usuario", usuario);
             cmd.Parameters.AddWithValue("@Clave", clave);
             cmd.ExecuteNonQuery();
