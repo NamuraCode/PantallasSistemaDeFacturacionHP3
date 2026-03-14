@@ -143,6 +143,7 @@
             txtGuardar.TabIndex = 23;
             txtGuardar.Text = "Actualizar";
             txtGuardar.UseVisualStyleBackColor = false;
+            txtGuardar.Click += txtGuardar_Click;
             // 
             // btnSalir
             // 
