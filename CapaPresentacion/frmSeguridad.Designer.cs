@@ -170,6 +170,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmSeguridad";
             Text = "frmSeguridad";
+            Load += frmSeguridad_Load_1;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);

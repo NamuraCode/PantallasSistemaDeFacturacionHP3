@@ -100,5 +100,10 @@ namespace PantallasSistemaFacturacion
         {
 
         }
+
+        private void frmSeguridad_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
