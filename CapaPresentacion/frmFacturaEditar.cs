@@ -60,7 +60,6 @@ namespace PantallasSistemaFacturacion
                 CargarFactura();
             }
 
-            // Ocultar columna ID tras el binding
             if (dgvDetalle.Columns.Contains("IdProducto"))
                 dgvDetalle.Columns["IdProducto"].Visible = false;
         }
@@ -132,12 +131,12 @@ namespace PantallasSistemaFacturacion
                 if (dt.Rows.Count == 0) return;
 
                 DataRow row = dt.Rows[0];
-                txtNumeroFactura.Text      = row["NumeroFactura"].ToString();
-                cmbCliente.SelectedValue   = row["IdCliente"];
-                cmbEmpleado.SelectedValue  = row["IdEmpleado"];
-                dtpFechaFactura.Value      = Convert.ToDateTime(row["FechaFactura"]);
-                txtDescuento.Text          = Convert.ToDecimal(row["Descuento"]).ToString("N2");
-                cmbEstado.SelectedItem     = row["Estado"].ToString();
+                txtNumeroFactura.Text = row["NumeroFactura"].ToString();
+                cmbCliente.SelectedValue = row["IdCliente"];
+                cmbEmpleado.SelectedValue = row["IdEmpleado"];
+                dtpFechaFactura.Value = Convert.ToDateTime(row["FechaFactura"]);
+                txtDescuento.Text = Convert.ToDecimal(row["Descuento"]).ToString("N2");
+                cmbEstado.SelectedItem = row["Estado"].ToString();
 
                 // Cargar detalle
                 DataTable detalles = dalFacturas.ListarDetallesFactura(idFactura);
